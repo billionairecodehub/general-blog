@@ -1,0 +1,92 @@
+/* Basic layout sizes and smooth reveal utilities for General blog */
+:root {
+  /* Mobile-first defaults */
+  --nav-height: 64px;
+  --footer-height: 64px;
+  --page-padding: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+}
+
+.site-header {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.site-header__inner {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main {
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+  padding: 16px var(--page-padding) calc(var(--footer-height) + 16px);
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.footer {
+  height: var(--footer-height);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Larger screens: increase spacing (tablet/desktop adjustments) */
+@media (min-width: 720px) {
+  :root {
+    --page-padding: 20px;
+    --nav-height: 80px;
+    --footer-height: 80px;
+  }
+  .main {
+    padding: 24px var(--page-padding) calc(var(--footer-height) + 24px);
+  }
+}
+
+/* Touch flicker / tap highlight fix */
+html,
+body,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Scroll reveal (simple): elements start slightly translated and fade in */
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0) scale(0.995);
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    opacity 360ms ease;
+}
+.scroll-reveal-item.scroll-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Small utility */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}

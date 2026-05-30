@@ -1,0 +1,15 @@
+/* Minimal font.css for General blog template */
+@font-face {
+  font-family: "KyivTypeSerif";
+  src: local("Georgia");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  font-family: "KyivTypeSerif", Georgia, "Times New Roman", serif;
+  background: #ffffff;
+  color: #111;
+}
