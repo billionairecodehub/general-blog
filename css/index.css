@@ -445,7 +445,7 @@ body {
   bottom: 0;
   z-index: 10;
   border-top: 0.5px solid rgba(107, 158, 255, 0.2);
-  padding: 7px 4px;
+  padding: 4px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1124,7 +1124,6 @@ body {
 }
 .home-blog-footer {
   background: #f4f4f4;
-  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
