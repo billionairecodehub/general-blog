@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <title>General blog — Prototype</title>
+    <title>General | Blog</title>
+    <link rel="icon" type="image/png" href="" />
     <link rel="stylesheet" href="font.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <script defer src="js/index.js"></script>
   </head>
   <body>
-    <div class="app-root">
-      <header class="site-header" role="banner">
-        <div class="site-header__inner">
-          <div class="site-header__left"></div>
-          <div class="site-header__right"></div>
-        </div>
-      </header>
+    <!-- ═══════════════════════════════════════════════
+         MOBILE LAYOUT — Header / Main / Footer shell
+         ═══════════════════════════════════════════════ -->
+    <div class="mobile-layout">
+      <!-- ── HEADER ── -->
+      <header class="header"></header>
 
-      <main class="main">
+      <!-- ── MAIN — Home Block 1 only ── -->
+      <main class="main" id="main">
+        <!-- HOME PAGE ─ shown by default -->
         <div class="home-blog-main">
           <div class="brand-text">
             <div class="brand-title-text">
@@ -111,10 +112,15 @@
             </div>
           </div>
         </div>
+
+        <!-- OTHER PAGES — add your page partials here, hidden by default -->
+        <!-- <div class="page" id="page-feed" style="display:none;"> ... </div> -->
+        <!-- <div class="page" id="page-quest" style="display:none;"> ... </div> -->
       </main>
 
+      <!-- ── FOOTER NAV ── -->
       <footer class="footer">
-        <div class="container">
+        <div class="footer-wrapper">
           <div class="home-blog-footer">
             <div class="blog-footer-wrapper">
               <div class="blog-footer-board">
@@ -138,5 +144,29 @@
         </div>
       </footer>
     </div>
+
+    <!-- ══════════════════════════════════════════════
+         REDIRECT — shown on Tablet & Desktop
+         (index.css hides .mobile-layout above 768px
+         and shows this instead)
+         ══════════════════════════════════════════════ -->
+    <div class="redirect-page">
+      <div class="redirect-container">
+        <h1 class="redirect-title">504 Error</h1>
+        <img
+          src="https://i.postimg.cc/XvnXLWQv/redirect-img.png"
+          alt="Mobile only"
+          class="redirect-img"
+        />
+        <div class="redirect-text">
+          <p class="redirect-subtext">
+            This is Currently Unavailable on Tablet and Desktop
+          </p>
+          <a href="#" class="redirect-cta">View On Mobile</a>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="js/index.js"></script>
   </body>
 </html>
