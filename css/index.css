@@ -1199,3 +1199,130 @@ body {
   object-fit: cover;
   aspect-ratio: 1;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   14. SUBSCRIBE MODAL — Slide-up from bottom
+   ═══════════════════════════════════════════════════════════════ */
+
+.subscribe-modal-overlay {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 70vh;
+  background-color: #f4f4f4;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: bottom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-modal-overlay.active {
+  bottom: 0;
+}
+
+.subscribe {
+  width: 100%;
+  padding: 20px;
+  min-height: fit-content;
+}
+
+.subscribe-board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subscribe-heading-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cancel {
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.subscribe2 {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.subscribe-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.subscribe-tagline {
+  color: #333333;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.subscribe-title {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.1em;
+}
+
+.subscribe-cta-board {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.subscribe-name-board,
+.subscribe-email-board,
+.subscribe-btn-board {
+  width: 100%;
+  padding: 16px 12px;
+  background-color: #d4d4d4;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.subscribe-input-placeholder {
+  color: #666666;
+  font-size: 12px;
+}
+
+.subscribe-btn-board {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.subscribe-entry {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ─ Ensure main doesn't get covered by modal ─ */
+.main {
+  position: relative;
+  z-index: 1;
+}
