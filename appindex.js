@@ -62,6 +62,33 @@ const AppRouter = (() => {
   };
 
   // ══════════════════════════════════════════════════════════════
+  // PAGE-SPECIFIC CSS/JS LOADING
+  // ══════════════════════════════════════════════════════════════
+  const loadPageAssets = (pageName) => {
+    // Remove previous page CSS/JS
+    if (currentPage) {
+      document.querySelectorAll(`link[data-page="${currentPage}"]`).forEach(el => el.remove());
+      document.querySelectorAll(`script[data-page="${currentPage}"]`).forEach(el => el.remove());
+    }
+
+    // Load page-specific CSS
+    const cssLink = document.createElement('link');
+    cssLink.rel = 'stylesheet';
+    cssLink.href = `css/${pageName}.css`;
+    cssLink.dataset.page = pageName;
+    document.head.appendChild(cssLink);
+
+    // Load page-specific JS
+    const script = document.createElement('script');
+    script.src = `js/${pageName}.js`;
+    script.dataset.page = pageName;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    console.log(`[AppRouter] Loaded assets for ${pageName}`);
+  };
+
+  // ══════════════════════════════════════════════════════════════
   // PAGE SWITCHING (full-page swaps in main)
   // ══════════════════════════════════════════════════════════════
   const showPage = async (pageName) => {
@@ -81,6 +108,9 @@ const AppRouter = (() => {
       console.error(`[AppRouter] Page ${pageName} not loaded`);
       return;
     }
+
+    // Load page-specific CSS/JS
+    loadPageAssets(pageName);
 
     // Clear previous page content
     main.innerHTML = "";
@@ -106,6 +136,19 @@ const AppRouter = (() => {
     let modal = document.getElementById("subscribe-modal");
 
     if (subscribeOpen) {
+      // Load subscribe CSS/JS
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = 'css/subscribe.css';
+      cssLink.id = 'subscribe-css';
+      document.head.appendChild(cssLink);
+
+      const script = document.createElement('script');
+      script.src = 'js/subscribe.js';
+      script.id = 'subscribe-js';
+      script.defer = true;
+      document.body.appendChild(script);
+
       // Create modal if it doesn't exist
       if (!modal) {
         modal = document.createElement("div");
@@ -126,6 +169,10 @@ const AppRouter = (() => {
 
       console.log("[AppRouter] Subscribe modal opened");
     } else {
+      // Remove subscribe CSS/JS
+      document.getElementById('subscribe-css')?.remove();
+      document.getElementById('subscribe-js')?.remove();
+
       if (modal) {
         modal.classList.remove("active");
         modal.innerHTML = "";
@@ -227,8 +274,8 @@ const AppRouter = (() => {
 
 // Start the app when DOM is ready
 // Handle both cases: if DOMContentLoaded already fired or will fire
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
     AppRouter.init();
   });
 } else {
